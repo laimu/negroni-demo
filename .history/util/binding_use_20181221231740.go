@@ -66,7 +66,7 @@ func (h *BindHandler) ServeHTTP(rw http.ResponseWriter, r *http.Request, next ht
 
 	if strings.HasPrefix(requestURI, "/book") {
 		fmt.Println("binding .... book")
-		if errs := binding.Bind(r, &h.Bf); errs != nil {
+		if errs := binding.Bind(r, &h.Cf); errs != nil {
 			fmt.Println("Data Bind Error!!!")
 			http.Error(rw, errs.Error(), http.StatusBadRequest)
 			return

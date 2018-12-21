@@ -15,11 +15,7 @@ func main() {
 	})
 
 	mux.HandleFunc("/book", func(w http.ResponseWriter, req *http.Request) {
-		fmt.Fprintf(w, "Hello book")
-	})
-
-	mux.HandleFunc("/user", func(w http.ResponseWriter, req *http.Request) {
-		fmt.Fprintf(w, "Hello user")
+		fmt.Fprintf(w, "book")
 	})
 
 	n := negroni.Classic() // Includes some default middlewares

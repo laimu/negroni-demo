@@ -50,13 +50,11 @@ func (bf *BookForm) FieldMap(req *http.Request) binding.FieldMap {
 
 type BindHandler struct {
 	Cf ContactForm
-	Bf BookForm
 }
 
 func (h *BindHandler) ServeHTTP(rw http.ResponseWriter, r *http.Request, next http.HandlerFunc) {
 	requestURI := r.RequestURI
 	if strings.HasPrefix(requestURI, "/user") {
-		fmt.Println("binding .... user")
 		if errs := binding.Bind(r, &h.Cf); errs != nil {
 			fmt.Println("Data Bind Error!!!")
 			http.Error(rw, errs.Error(), http.StatusBadRequest)
@@ -64,14 +62,6 @@ func (h *BindHandler) ServeHTTP(rw http.ResponseWriter, r *http.Request, next ht
 		}
 	}
 
-	if strings.HasPrefix(requestURI, "/book") {
-		fmt.Println("binding .... book")
-		if errs := binding.Bind(r, &h.Bf); errs != nil {
-			fmt.Println("Data Bind Error!!!")
-			http.Error(rw, errs.Error(), http.StatusBadRequest)
-			return
-		}
-	}
-
+	fmt.Println("binding ....")
 	next(rw, r)
 }
