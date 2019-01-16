@@ -68,7 +68,7 @@ func (h *BindHandler) ServeHTTP(rw http.ResponseWriter, r *http.Request, next ht
 		fmt.Println("binding .... book")
 		if errs := binding.Bind(r, &h.Bf); errs != nil {
 			fmt.Println("Data Bind Error!!!", errs.Error())
-			http.Error(rw, errs.Error(), http.StatusBadRequest)
+			http.Error(rw, errs.Error()., http.StatusBadRequest)
 			return
 		}
 	}

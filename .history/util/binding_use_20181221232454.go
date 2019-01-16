@@ -58,7 +58,7 @@ func (h *BindHandler) ServeHTTP(rw http.ResponseWriter, r *http.Request, next ht
 	if strings.HasPrefix(requestURI, "/user") {
 		fmt.Println("binding .... user")
 		if errs := binding.Bind(r, &h.Cf); errs != nil {
-			fmt.Println("Data Bind Error!!!", errs.Error())
+			fmt.Println("Data Bind Error!!!")
 			http.Error(rw, errs.Error(), http.StatusBadRequest)
 			return
 		}
@@ -67,8 +67,8 @@ func (h *BindHandler) ServeHTTP(rw http.ResponseWriter, r *http.Request, next ht
 	if strings.HasPrefix(requestURI, "/book") {
 		fmt.Println("binding .... book")
 		if errs := binding.Bind(r, &h.Bf); errs != nil {
-			fmt.Println("Data Bind Error!!!", errs.Error())
-			http.Error(rw, errs.Error(), http.StatusBadRequest)
+			fmt.Println("Data Bind Error!!!")
+			http.Error(rw, errs., http.StatusBadRequest)
 			return
 		}
 	}

@@ -28,8 +28,6 @@ func main() {
 	n.Use(bindHandler)
 
 	corsHandler := util.InitCors()
-	n.Use(corsHandler)
-
 	n.UseHandler(mux)
 
 	http.ListenAndServe(":3000", n)
