@@ -35,7 +35,7 @@ func main() {
 	n.Use(delay.Middleware{})
 
 	//use gzip
-	// n.Use(util.InitGzip())
+	n.Use(util.InitGzip())
 
 	n.UseHandler(mux)
 

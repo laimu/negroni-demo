@@ -25,6 +25,9 @@ func main() {
 
 	n := negroni.Classic() // Includes some default middlewares
 
+		//use gzip
+		n.Use(util.InitGzip())
+		
 	bindHandler := new(util.BindHandler)
 	n.Use(bindHandler)
 
@@ -34,8 +37,7 @@ func main() {
 	//add delay, add "X-Add-Delay" to http header
 	n.Use(delay.Middleware{})
 
-	//use gzip
-	// n.Use(util.InitGzip())
+
 
 	n.UseHandler(mux)
 

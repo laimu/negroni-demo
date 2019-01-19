@@ -31,13 +31,12 @@ func main() {
 	corsHandler := util.InitCors()
 	n.Use(corsHandler)
 
+	n.UseHandler(mux)
+
 	//add delay, add "X-Add-Delay" to http header
 	n.Use(delay.Middleware{})
 
-	//use gzip
-	// n.Use(util.InitGzip())
-
-	n.UseHandler(mux)
+	n.U
 
 	http.ListenAndServe(":3000", n)
 }

@@ -25,6 +25,8 @@ func main() {
 
 	n := negroni.Classic() // Includes some default middlewares
 
+	
+
 	bindHandler := new(util.BindHandler)
 	n.Use(bindHandler)
 

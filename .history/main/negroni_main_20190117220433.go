@@ -5,7 +5,6 @@ import (
 	"net/http"
 
 	util "../util"
-	"github.com/jeffbmartinez/delay"
 	"github.com/urfave/negroni"
 )
 
@@ -31,13 +30,9 @@ func main() {
 	corsHandler := util.InitCors()
 	n.Use(corsHandler)
 
-	//add delay, add "X-Add-Delay" to http header
-	n.Use(delay.Middleware{})
-
-	//use gzip
-	// n.Use(util.InitGzip())
-
 	n.UseHandler(mux)
+
+	Use(delay.Middleware{})
 
 	http.ListenAndServe(":3000", n)
 }
